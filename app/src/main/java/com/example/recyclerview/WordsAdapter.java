@@ -1,5 +1,6 @@
 package com.example.recyclerview;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,15 +23,22 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.WordViewHold
         }
     }
 
+    public WordsAdapter(List<String> wordList){
+        this.wordList = wordList;
+    }
+
     @NonNull
     @Override
     public WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        WordItemListBinding wBinding = WordItemListBinding
+                .inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new WordViewHolder(wBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
-
+        String palabra = wordList.get(position);
+        holder.textView.setText(palabra);
     }
 
     @Override

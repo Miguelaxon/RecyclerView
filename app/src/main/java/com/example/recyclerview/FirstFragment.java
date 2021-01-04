@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.recyclerview.databinding.FragmentFirstBinding;
 
@@ -28,8 +29,16 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        WordsAdapter adapter = new WordsAdapter(wordList());
+        binding.rv.setAdapter(adapter);
+        binding.rv.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Log.d("listado",wordList().toString());
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private List<String> wordList(){
